@@ -4,8 +4,8 @@ import { verifyJWT } from "../middlewares/auth.middleware";
 
 const router = Router();
 
-router.get('/confidential', verifyJWT, confidential);
-router.post('/register', register)
-router.post('/login', login)
+router.get("/confidential", verifyJWT, confidential);
+router.post("/register", register);
+router.post("/login", login);
 
 export default router;
