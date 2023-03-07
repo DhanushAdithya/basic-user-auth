@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -9,6 +10,7 @@ dotenv.config();
 const app = express();
 const port = Number(process.env.PORT) || 3000;
 
+mongoose.set('strictQuery', true);
 mongoose
 	.connect(process.env.MONGODB_URI!)
 	.then(() => {
@@ -20,6 +22,7 @@ mongoose
 		}
 	});
 
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
