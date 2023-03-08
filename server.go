@@ -1,6 +1,7 @@
 package main
 
 import (
+	"basic-user-auth/database"
 	"fmt"
 	"os"
 
@@ -27,6 +28,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	err = database.InitDB()
+	if err != nil {
+		panic(err)
+	}
+	defer database.CloseDB()
 
 	app := fiber.New()
 	app.Use(cors.New())
