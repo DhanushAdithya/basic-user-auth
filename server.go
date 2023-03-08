@@ -2,6 +2,7 @@ package main
 
 import (
 	"basic-user-auth/database"
+	"basic-user-auth/routes"
 	"fmt"
 	"os"
 
@@ -37,6 +38,8 @@ func main() {
 
 	app := fiber.New()
 	app.Use(cors.New())
+
+	routes.Auth(app)
 
 	port := os.Getenv("PORT")
 	if port == "" {
